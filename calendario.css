@@ -1,0 +1,55 @@
+body {
+  font-family: Inter, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+  margin: 0;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contenedor-calendario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.dia {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.dia.hoy {
+  background: #ff9800;
+  color: #fff;
+  font-weight: bold;
+}
+
+.detalle-dia {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
+}
+
+.oculto {
+  display: none;
+}
