@@ -7,69 +7,49 @@
   <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
-<nav class="menu">
   <button id="hamburger">☰</button>
-  <div id="menuLinks" class="oculto">
-    <a href="calendario.html">Calendario</a>
-  </div>
-</nav>
+  <header>
+    
+    <h1>Contador</h1>
+    
+  </header>
+
   <main class="contenedor">
-  <!-- Contenedor relativo para superponer los dos botones -->
-  <div class="botones-wrapper">
-    <!-- Botón de contador (bloqueado al inicio) -->
-    <button id="btnContador" class="btn-contador" disabled>
-      <div id="contadorDisplay" class="contador-display">0</div>
-    </button>
-
-    <!-- Botón de iniciar (visible desde el inicio, mismo tamaño) -->
-    <button id="btnIniciar" class="btn-iniciar visible">INICIAR</button>
-  </div>
-
-  <!-- Tabla/Formulario de resultados -->
-  <section class="resultados">
-    <h2>Resumen de producción</h2>
-    <div class="config-pago">
-      <label for="valorPago">Valor por paquetico:</label>
-      <input type="number" id="valorPago" step="0.01" min="0" />
+    <div class="botones-wrapper">
+      <button id="btnContador" class="btn-contador" disabled>
+        <div id="contadorDisplay" class="contador-display">0</div>
+      </button>
+      <button id="btnIniciar" class="btn-iniciar visible">INICIAR</button>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Bolsas de maní</th>
-          <th>Paqueticos acumulados</th>
-          <th>Dinero generado</th>
-        </tr>
-      </thead>
-      <tbody id="tablaResultados">
-        <!-- Se llenará dinámicamente -->
-      </tbody>
-    </table>
-  </section>
-  <button id="btnGuardar">Guardar</button>
-</main>
 
+    <section class="acciones">
+      <h2>Acciones</h2>
+      <label for="accionSelect">Selecciona acción:</label>
+      <select id="accionSelect"></select>
+    </section>
+
+    <!-- Resumen de producción -->
+    <section id="resumenProduccion" class="resumen visible">
+      <!-- Render dinámico -->
+    </section>
+
+    <div class="resumen-buttons">
+      <button id="toggleResumen">Ocultar</button>
+      <button id="clearResumen">Limpiar Resumen</button>
+    </div>
+
+    <button id="btnGuardar">Guardar</button>
+  </main>
+
+  <div id="overlayMenu">
+    <a href="calendario.html" class="btn-link">Ir al calendario</a>
+  </div>
 
   <footer class="pie">
     <small>Proyecto personal - Contador de maní</small>
   </footer>
 
-  <script src="jsMain.js"></script>
+  <script type="module" src="acciones.js"></script>
+  <script type="module" src="jsMain.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

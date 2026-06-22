@@ -1,246 +1,235 @@
 :root {
-    --bg: #f9fafb;
-    --surface: #ffffff;
-    --text: #111827;
-    --accent: rgba(255, 165, 0, 0.85);
-    --danger: #ef4444;
-    --border: #d1d5db;
-    --font-size-base: 1.2rem;
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+  --accent: rgba(255, 165, 0, 0.85);
+  --danger: #ef4444;
+  --border: #d1d5db;
+  --font-size-base: 1.2rem;
 }
 
-/* --- Modo oscuro --- */
-body.dark-mode {
-    --bg: #0b0c0f;
-    --surface: #111316;
-    --text: #f3f4f6;
-    --accent: rgba(255, 165, 0, 0.85);
-    --danger: #ef4444;
-    --border: #23262d;
-}
-
-* { box-sizing: border-box; }
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Inter, system-ui, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-size: var(--font-size-base);
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: var(--font-size-base);
 }
-/*menu hamburguesa*/
-.menu {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
+
+/* Ícono hamburguesa fijo */
+
 #hamburger {
   font-size: 2rem;
-  background: none;
+  background: rgba(0,0,0,0.3); /* fondo circular semitransparente */
   border: none;
   cursor: pointer;
+  color: #fff; /* texto blanco para contraste */
+  position: fixed;   /* 🔑 siempre fijo en pantalla */
+  top: 3rem;
+  left: 1rem;
+  z-index: 100;      /* más alto que todo */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%; /* círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#menuLinks {
-  margin-top: 0.5rem;
+#hamburger:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+/* Sección de acciones */
+.acciones {
+  margin-top: 2rem;
+  text-align: center;
+}
+.acciones h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+.acciones label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.acciones select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Resumen de producción */
+.resumen {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+  overflow: hidden;
+}
+.resumen h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+.resumen p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+.resumen p strong {
+  font-weight: 700;
+}
+/* Estado oculto: colapsa altura y elimina espacio */
+.resumen.hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Botones del resumen */
+.resumen-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.resumen-buttons button {
+  all: unset;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.resumen-buttons button:hover {
+  background: rgba(255, 140, 0, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Botón Guardar */
+#btnGuardar {
+  all: unset;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin-top: 1rem;
+}
+#btnGuardar:hover {
+  background: rgba(255, 140, 0, 0.9);
+  transform: translateY(-3px);
+}
+
+/* Contenedor principal */
+.contenedor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 0;
+}
+
+/* Botones */
+.botones-wrapper {
+  position: relative;
+  width: 84%; /* 20% más grande */
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-contador {
+  all: unset;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contador-display {
+  font-size: 7rem; /* más grande */
+  font-weight: 700;
+  color: #ffffff;
+}
+.btn-contador.alerta {
+  background: var(--danger);
+}
+.btn-iniciar {
+  all: unset;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
   background: #333;
   color: #fff;
-  padding: 0.5rem;
-  border-radius: 6px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
-#menuLinks a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 0.5rem 0;
+.btn-iniciar.visible {
+  opacity: 1;
 }
-.oculto {
+.btn-iniciar.oculto {
   display: none;
 }
 
-.contenedor {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 0;
+/* Overlay del menú */
+#overlayMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 25;
 }
-
-/* Contenedor relativo para superposición de botones */
-.botones-wrapper {
-    position: relative;
-    width: 70%;
-    max-width: 500px;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#overlayMenu.visible {
+  opacity: 1;
+  pointer-events: auto;
 }
-
-/* Botón contador */
-.btn-contador {
-    all: unset;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    background: var(--accent);
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-.btn-contador:hover {
-    background: rgba(255, 140, 0, 0.9);
-    transform: translateY(-3px);
-}
-.contador-display {
-    font-size: 6rem; /* mantenemos igual */
-    font-weight: 700;
-    color: #ffffff;
-}
-.btn-contador.alerta {
-    background: var(--danger);
-    transform: scale(1.05);
-}
-
-/* Botón iniciar (idéntico tamaño, encima del contador) */
-.btn-iniciar {
-    all: unset;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: #333;
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-}
-.btn-iniciar.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-.btn-iniciar.oculto {
-    display: none;
-}
-
-/* Configuración de pago */
-.config-pago {
-    margin-bottom: 1rem;
-    text-align: center;
-    font-size: 1.1rem;
-}
-.config-pago label {
-    font-weight: 600;
-    margin-right: 0.5rem;
-}
-.config-pago input {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 1.1rem;
-    width: 140px;
-    text-align: right;
-}
-
-/* Resultados */
-.resultados {
-    width: 100%;
-    max-width: 600px;
-    margin-top: 2rem;
-}
-.resultados h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-.resultados table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-}
-.resultados th, .resultados td {
-    padding: 1rem;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    font-size: 1.1rem;
-}
-.resultados th {
-    background: #f3f4f6;
-    font-weight: 600;
-}
-body.dark-mode .resultados th {
-    background: #1f232b;
-}
-.resultados tr:last-child td {
-    border-bottom: none;
-}
-
-/* Footer */
-.pie {
-    padding: 1rem;
-    text-align: center;
-    font-size: 1rem;
-    color: #6b7280;
-    border-top: 1px solid var(--border);
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-    .botones-wrapper {
-        width: 96%;
-    }
-    .contador-display {
-        font-size: 5rem;
-    }
-
-    .resultados table,
-    .resultados thead,
-    .resultados tbody,
-    .resultados th,
-    .resultados td,
-    .resultados tr {
-        display: block;
-        width: 100%;
-    }
-
-    .resultados thead {
-        display: none;
-    }
-
-    .resultados tr {
-        margin-bottom: 1rem;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: var(--surface);
-        padding: 0.5rem;
-    }
-
-    .resultados td {
-        border: none;
-        text-align: left;
-        padding: 0.5rem;
-        position: relative;
-    }
-
-    .resultados td::before {
-        content: attr(data-label);
-        font-weight: 600;
-        display: block;
-        margin-bottom: 0.25rem;
-        color: #6b7280;
-    }
+#overlayMenu .btn-link {
+  background: var(--accent);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
 }
